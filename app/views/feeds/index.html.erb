@@ -1,0 +1,13 @@
+<h1>Ultimos Feeds</h1>
+
+
+
+
+<ul class="list-group">
+  <% @feeds.each do |feed| %>
+  <li class="list-group-item"><%= feed.texto %> em <strong><%= feed.place.nome %></strong></li>
+  <% end %>
+</ul>
+
+
+<%= link_to 'New Feed', new_feed_path %>
