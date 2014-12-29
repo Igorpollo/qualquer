@@ -5,6 +5,7 @@ class FeedsController < ApplicationController
   # GET /feeds.json
   def index
     @feeds = Feed.all.reverse
+    @feed = Feed.new
   end
 
   # GET /feeds/1
@@ -14,7 +15,12 @@ class FeedsController < ApplicationController
 
   # GET /feeds/new
   def new
+    if (params[:texto])
+      @feed = current_user.feeds.new(texto: :texto, place_id: place_id)
+      @feed.save
+    else
     @feed = Feed.new
+    end
   end
 
   # GET /feeds/1/edit
