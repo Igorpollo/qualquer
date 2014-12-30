@@ -16,7 +16,7 @@ class FeedsController < ApplicationController
   # GET /feeds/new
   def new
     if (params[:texto])
-      @feed = current_user.feeds.new(texto: :texto, place_id: place_id)
+      @feed = current_user.feeds.new(texto: params[:texto], place_id: params[:place_id])
       @feed.save
     else
     @feed = Feed.new
