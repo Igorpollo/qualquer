@@ -46,71 +46,12 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <%= simple_form_for(@feed) do |f| %>
-  <% if @feed.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@feed.errors.count, "error") %> prohibited this feed from being saved:</h2>
 
-      <ul>
-      <% @feed.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.input :texto, as: :text %>
-    <%= f.association :place, :include_blank => false, :label_method => :nome %>
-  </div>
-  <div class="actions">
-    
-
-  </div>
-
-      </div>
-      <div class="modal-footer">
-        <%= f.button :submit %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-<script type="text/javascript">
-	
-</script>
 <%= yield %>
+
+
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#teste").click(function(){
-			event.preventDefault();
-			$('#myModal').modal();
-		});
 
-		$('.btn-default').click(function() {
-			event.preventDefault();
-			var textoFeed = $('#feed_texto').val();
-			var placeFeed = $('#feed_place_id').val();
-			$.ajax ({
-				url: Routes.new_feed_path({texto: textoFeed, place_id: placeFeed}),
-				method: 'get',
-				success: function() {
-					alert('sucesso');
-				}
-			});
-		});
-	});
-</script>
 </body>
 </html>

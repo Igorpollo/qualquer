@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: [:show, :edit, :update, :destroy]
+  before_action :set_place, except: [:favorite]
 
   respond_to :html
 
@@ -34,6 +35,16 @@ class PlacesController < ApplicationController
   def destroy
     @place.destroy
     respond_with(@place)
+  end
+
+  def favorite
+    if (params[:place])
+      @placeFav = current_user.places.new(place_id: params[:place_id])
+      @placeFav.save
+      render nothing: true
+    else
+    end  
+    render nothing: true
   end
 
   private

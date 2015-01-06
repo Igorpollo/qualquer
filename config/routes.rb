@@ -1,6 +1,7 @@
 Ontime::Application.routes.draw do
   resources :places
-
+  
+  match 'places/favorite' =>  'places#favorite', via: [:post] 
   devise_for :users
   resources :feeds
 

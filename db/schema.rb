@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228232008) do
+ActiveRecord::Schema.define(version: 20150106001948) do
+
+  create_table "favorites", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "place_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "feeds", force: true do |t|
     t.text     "texto"
     t.integer  "user_id"
-    t.integer  "place_id",   null: false
+    t.integer  "place_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -31,9 +38,9 @@ ActiveRecord::Schema.define(version: 20141228232008) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "primeiro_nome",                       null: false
-    t.string   "segundo_nome",                        null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "primeiro_nome"
+    t.string   "ultimo_nome"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

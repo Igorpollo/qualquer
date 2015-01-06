@@ -15,5 +15,26 @@
   <%= @place.long %>
 </p>
 
+<p>
+ <input type="hidden" id="place_info" value="<%= @place.id %>">
+</p>
+
+<p>
+<button class="btn btn-primary" id="BtFavorito">Favoritar</button>	
+</p>
+
 <%= link_to 'Edit', edit_place_path(@place) %> |
 <%= link_to 'Back', places_path %>
+
+<script type="text/javascript">
+   $(document).ready(function(){
+    $('#BtFavorito').click(function() {
+      var place = $('#place_info').val();
+      $.ajax ({
+        url: Routes.places_favorite_path({place_id: place}),
+        method: 'post',
+        success: function() {alert('Sucesso');}
+      });
+    });
+  });
+</script>

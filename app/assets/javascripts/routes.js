@@ -369,6 +369,10 @@
   places_path: function(options) {
   return Utils.build_path([], ["format"], [2,[2,[7,"/",false],[6,"places",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
+// places_favorite => /places/favorite(.:format)
+  places_favorite_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"places",false]],[7,"/",false]],[6,"favorite",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
 // rails_info => /rails/info(.:format)
   rails_info_path: function(options) {
   return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"rails",false]],[7,"/",false]],[6,"info",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);

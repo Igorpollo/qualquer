@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
          has_many :feeds
 
   def nome_completo
-          primeiro_nome + " " + segundo_nome
+          primeiro_nome + " " + ultimo_nome
   end
 end
