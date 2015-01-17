@@ -7,6 +7,7 @@
   <% @feeds.each do |feed| %>
   <li class="list-group-item"><%= feed.texto %> em <strong><%= feed.place.nome %></strong></li>
   <% end %>
+  <%= @feeds.each do   %>
 </ul>
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
