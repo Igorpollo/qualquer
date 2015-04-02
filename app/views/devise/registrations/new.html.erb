@@ -1,35 +1,48 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
  <div class="field">
-    <%= f.label :primeiro_nome %><br />
-    <%= f.text_field :primeiro_nome, autofocus: true %>
+   
+    <%= f.input :first_name, autofocus: true %>
   </div>
 
  <div class="field">
-    <%= f.label :ultimo_nome %><br />
-    <%= f.text_field :ultimo_nome %>
+   
+    <%= f.input :last_name %>
   </div>
 
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email %>
+   <div class="field">
+   
+    <%= f.input :nickname %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    
+    <%= f.association :game %> 
+  </div>
+
+  <div class="field">
+     <%= f.input :avatar, label: 'Coloque sua cara de nerd' %>
+  </div>
+
+  <div class="field">
+    
+    <%= f.input :email %>
+  </div>
+
+  <div class="field">
+    
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.input :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    
+    <%= f.input :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="actions">

@@ -4,14 +4,23 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  protected
+  before_filter :layout_functions
 
+def layout_functions
+  if current_user
+    @invites = Invite.where(invited: current_user.id, accepted: nil)
+  end
+  @users = User.all
+end
+
+
+  protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:primeiro_nome, :ultimo_nome, :email, :password, :password_confirmation, :provider, :image)
+      u.permit(:first_name, :last_name, :nickname, :email, :password, :password_confirmation, :provider, :avatar, :game)
     end
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:primeiro_nome, :ultimo_nome, :email, :password, :password_confirmation, :provider, :image)
+      u.permit(:first_name, :last_name, :nickname, :email, :password, :password_confirmation, :provider, :avatar, :game)
     end
   end
 

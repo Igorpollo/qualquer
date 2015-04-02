@@ -317,13 +317,17 @@
   destroy_user_session_path: function(options) {
   return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"users",false]],[7,"/",false]],[6,"sign_out",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
-// edit_feed => /feeds/:id/edit(.:format)
-  edit_feed_path: function(_id, options) {
-  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[2,[2,[7,"/",false],[6,"feeds",false]],[7,"/",false]],[3,"id",false]],[7,"/",false]],[6,"edit",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+// edit_game => /games/:id/edit(.:format)
+  edit_game_path: function(_id, options) {
+  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[2,[2,[7,"/",false],[6,"games",false]],[7,"/",false]],[3,"id",false]],[7,"/",false]],[6,"edit",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
-// edit_place => /places/:id/edit(.:format)
-  edit_place_path: function(_id, options) {
-  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[2,[2,[7,"/",false],[6,"places",false]],[7,"/",false]],[3,"id",false]],[7,"/",false]],[6,"edit",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+// edit_invite => /invites/:id/edit(.:format)
+  edit_invite_path: function(_id, options) {
+  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[2,[2,[7,"/",false],[6,"invites",false]],[7,"/",false]],[3,"id",false]],[7,"/",false]],[6,"edit",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
+// edit_team => /teams/:id/edit(.:format)
+  edit_team_path: function(_id, options) {
+  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[2,[2,[7,"/",false],[6,"teams",false]],[7,"/",false]],[3,"id",false]],[7,"/",false]],[6,"edit",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
 // edit_user_password => /users/password/edit(.:format)
   edit_user_password_path: function(options) {
@@ -333,21 +337,41 @@
   edit_user_registration_path: function(options) {
   return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"users",false]],[7,"/",false]],[6,"edit",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
-// feed => /feeds/:id(.:format)
-  feed_path: function(_id, options) {
-  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"feeds",false]],[7,"/",false]],[3,"id",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+// game => /games/:id(.:format)
+  game_path: function(_id, options) {
+  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"games",false]],[7,"/",false]],[3,"id",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
-// feeds => /feeds(.:format)
-  feeds_path: function(options) {
-  return Utils.build_path([], ["format"], [2,[2,[7,"/",false],[6,"feeds",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+// games => /games(.:format)
+  games_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[7,"/",false],[6,"games",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
-// new_feed => /feeds/new(.:format)
-  new_feed_path: function(options) {
-  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"feeds",false]],[7,"/",false]],[6,"new",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+// invite => /invites/:id(.:format)
+  invite_path: function(_id, options) {
+  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"invites",false]],[7,"/",false]],[3,"id",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
-// new_place => /places/new(.:format)
-  new_place_path: function(options) {
-  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"places",false]],[7,"/",false]],[6,"new",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+// invite_response => /invites/response(.:format)
+  invite_response_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"invites",false]],[7,"/",false]],[6,"response",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
+// invites => /invites(.:format)
+  invites_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[7,"/",false],[6,"invites",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
+// login => /login(.:format)
+  login_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[7,"/",false],[6,"login",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
+// new_game => /games/new(.:format)
+  new_game_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"games",false]],[7,"/",false]],[6,"new",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
+// new_invite => /invites/new(.:format)
+  new_invite_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"invites",false]],[7,"/",false]],[6,"new",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
+// new_team => /teams/new(.:format)
+  new_team_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"teams",false]],[7,"/",false]],[6,"new",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
 // new_user_password => /users/password/new(.:format)
   new_user_password_path: function(options) {
@@ -361,17 +385,9 @@
   new_user_session_path: function(options) {
   return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"users",false]],[7,"/",false]],[6,"sign_in",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
-// place => /places/:id(.:format)
-  place_path: function(_id, options) {
-  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"places",false]],[7,"/",false]],[3,"id",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
-  },
-// places => /places(.:format)
-  places_path: function(options) {
-  return Utils.build_path([], ["format"], [2,[2,[7,"/",false],[6,"places",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
-  },
-// places_favorite => /places/favorite(.:format)
-  places_favorite_path: function(options) {
-  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"places",false]],[7,"/",false]],[6,"favorite",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+// out_team => /invites/outteam(.:format)
+  out_team_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"invites",false]],[7,"/",false]],[6,"outteam",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
 // rails_info => /rails/info(.:format)
   rails_info_path: function(options) {
@@ -385,9 +401,21 @@
   rails_info_routes_path: function(options) {
   return Utils.build_path([], ["format"], [2,[2,[2,[2,[2,[2,[7,"/",false],[6,"rails",false]],[7,"/",false]],[6,"info",false]],[7,"/",false]],[6,"routes",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
+// registrar => /registrar(.:format)
+  registrar_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[7,"/",false],[6,"registrar",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
 // root => /
   root_path: function(options) {
   return Utils.build_path([], [], [7,"/",false], arguments);
+  },
+// team => /teams/:id(.:format)
+  team_path: function(_id, options) {
+  return Utils.build_path(["id"], ["format"], [2,[2,[2,[2,[7,"/",false],[6,"teams",false]],[7,"/",false]],[3,"id",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
+  },
+// teams => /teams(.:format)
+  teams_path: function(options) {
+  return Utils.build_path([], ["format"], [2,[2,[7,"/",false],[6,"teams",false]],[1,[2,[8,".",false],[3,"format",false]],false]], arguments);
   },
 // user_password => /users/password(.:format)
   user_password_path: function(options) {

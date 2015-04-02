@@ -4,9 +4,17 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-         has_many :feeds
+         belongs_to :team
+         has_many :invites
+         belongs_to :game
+        
 
-  def nome_completo
-          primeiro_nome + " " + ultimo_nome
+  def full_name
+          first_name + " " + last_name
   end
+
+  def full_nickname
+  	first_name + " " + '"'+nickname+'"' + " " + last_name
+  end
+  mount_uploader :avatar, AvatarUploader
 end

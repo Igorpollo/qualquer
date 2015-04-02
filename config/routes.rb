@@ -1,15 +1,30 @@
 Ontime::Application.routes.draw do
-  resources :places
-  
-  match 'places/favorite' =>  'places#favorite', via: [:post] 
-  devise_for :users
-  resources :feeds
+  resources :invites
+
+  resources :teams
+
+  resources :games
+
+  match 'invites/response' =>  'invites#invite_response', via: [:post, :get], as: 'invite_response'
+
+  match 'invites/outteam' =>  'invites#out_team', via: [:post, :get], as: 'out_team'
+
+  ### rota comentada abaixo => vou deixar escrito aqui pra vc lembrar
+
+  # toda vez que alguem acessar 'invites/response' é pra acessar => 'controller#action', poderá ser atraves dos metodos :post, :get e o "apelido" dessa rota será 'invite_response'
+
+  devise_for :users, controllers: {registrations: 'registrations'}
+
+  devise_scope :user do
+  get "/login" => "devise/sessions#new"
+  get "/registrar" => "devise/registrations#new"
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'feeds#index'
+   root 'games#index' 
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

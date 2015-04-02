@@ -11,36 +11,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150106001948) do
+ActiveRecord::Schema.define(version: 20150330163656) do
 
-  create_table "favorites", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "place_id"
+  create_table "friendly_id_slugs", force: true do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "games", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "feeds", force: true do |t|
-    t.text     "texto"
+  create_table "invites", force: true do |t|
     t.integer  "user_id"
-    t.integer  "place_id",   null: false
+    t.integer  "invited"
+    t.integer  "team_id"
+    t.boolean  "accepted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "places", force: true do |t|
-    t.string   "nome"
-    t.string   "lat"
-    t.string   "long"
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.integer  "captain"
+    t.integer  "wins"
+    t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "primeiro_nome",                       null: false
-    t.string   "segundo_nome",                        null: false
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "nickname"
+    t.integer  "team_id"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -58,9 +74,12 @@ ActiveRecord::Schema.define(version: 20150106001948) do
     t.string   "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar"
+    t.integer  "game_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["game_id"], name: "index_users_on_game_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

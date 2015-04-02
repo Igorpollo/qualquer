@@ -4,11 +4,15 @@ source 'http://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use mysql2 as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '0.3.11'
 
 gem 'devise'
 
 gem 'js-routes'
+
+gem 'carrierwave'
+
+gem 'friendly_id', '~> 5.1.0'
 
 gem 'simple_form'
 

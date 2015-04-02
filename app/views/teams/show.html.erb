@@ -1,0 +1,110 @@
+<p id="notice"><%= notice %></p>
+<h1>Pagina do <%= @team.name %></h1>
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>Captain:</strong>
+  <%= @team.captain %>
+</p>
+
+<p>
+  <strong>Wins:</strong>
+  <%= @team.wins %>
+</p>
+
+<h2>Jogadores desse time</h2>
+
+<ul class="list-group">
+ <% @jogadores.each do |jogador| %>
+  <li class="list-group-item jogador"><%= image_tag(jogador.avatar.url, size: "50") %> <%= jogador.full_name %>
+   <button class="btn btn-danger excluir">Excluir</button>
+   <input type="hidden" class="iduser" value="<%= jogador.id %>">
+  </li>
+ <% end %>
+</ul>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Convidar jogador</button>
+
+<div class="modal fade bs-example-modal-lg" id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h3>Convidar Jogador</h3>
+      </div>
+      <div class="modal-body">
+        <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <select id="usersselect" class="form-control">
+            <% @users.each do |user| %>
+          <option value="<%= user.id %>"><%= user.full_name %></option>
+          <% end %>
+        </select>
+        <button class="btn btn-primary convidar">Convidar</button>
+        </div>
+      </form>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+<input type="hidden" value="<%= @team.id %>" id="time">
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.excluir').hide();
+  $('.jogador').mouseover(function(){
+    $(this).find('.excluir:first').show();
+  });
+  $('.jogador').mouseout(function(){
+    $(this).find('.excluir:first').hide();
+  });
+});
+</script>
+h
+<script type="text/javascript">
+
+$(document).ready(function(){
+  $('.excluir').click(function(){
+    var t = $(this);
+    event.preventDefault();
+   var idUser = $(this).next().val();
+   $.ajax({
+      url: Routes.out_team_path({user: idUser}),
+      method: 'post',
+      success: function() {
+       t.parent().slideUp();
+      }
+   });
+  
+  });
+  });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){                                     //quando o documento estiver pronto
+$('.convidar').click(function() {                              //quando clicar no botao que tem a classe 'convidar'
+      event.preventDefault();                                    //previne o formulario de ser postado
+      var idUser = $('#usersselect').val();
+      var idTime =  $('#time').val();             //pega o valor do 'select' do usuario e grava na varialvel User
+      $.ajax ({                                              // começa a requisição ajax
+        url: Routes.new_invite_path({user: idUser, team: idTime}),     // aqui vai a url da nossa requisição
+        method: 'get',                                    // o metodo
+        success: function() {                             //a função quando a requisição é completada com sucesso
+          $('#modal').modal('hide');              //esconde o modal
+          alert('foi');               //da um alert...nao ta fechando o modal
+        }
+      });
+    });
+});
+</script>
+<h2></h2>
+<%= link_to 'Edit', edit_team_path(@team) %> |
+<%= link_to 'Back', teams_path %>

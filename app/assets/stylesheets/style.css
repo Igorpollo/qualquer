@@ -1,0 +1,140 @@
+
+html {
+    height: auto;
+    
+}
+body {
+    height: 100%;
+    font-family: 'Lato', sans-serif;
+}
+.header {
+    left: 0;
+    margin: 0;
+    background-color: #3a3434;
+    right: 0;
+    top: 0;
+    z-index: 870;
+    -webkit-backface-visibility: hidden;
+    /* -webkit-transform: translateZ(0); */
+    width: auto;
+}
+.logo {
+    display: table-cell;
+    color: #fff;
+    height: 80px;
+    max-width: 100%;
+    vertical-align: middle;
+    width: 100%;
+}
+.logo > img {
+    vertical-align: middle;
+}
+.right-box-wrapper {
+    display: table-cell;
+    height: 80px;
+    vertical-align: middle;
+}
+.box-top {
+    height: 400px;
+    background-color: #204d74;
+    background-image: url("../img/bg_test.png");
+    padding: 30px 0;
+}
+.title-principal {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.form-new-account label {
+    color: #fff;
+}
+
+.form-new-account input {
+    height: 40px;
+    border: none;
+    font-size: 15px;
+}
+.btn-trid {
+    color: #fff;
+    -webkit-box-shadow: inset 0px -4px 0px 0px rgba(50, 50, 50, 0.45);
+    -moz-box-shadow:    inset 0px -4px 0px 0px rgba(50, 50, 50, 0.45);
+    box-shadow:         inset 0px -4px 0px 0px rgba(50, 50, 50, 0.45);
+    border: none;
+    border-radius: 4px;
+}
+.btn-principal-account {
+    height: 45px;
+    background-color: #d9534f;
+}
+
+.btn-principal-account:hover {
+    background-color: #d43f3a;
+}
+
+.form-new-account i {
+    color: #555;
+}
+.input-group-addon {
+    background-color: #fff !important;
+    border: none !important;
+}
+
+service a:not(.btn),
+.big-services-box a:not(.btn),
+.features-block a:not(.btn) {
+    color: #1e1e1e;
+    display: inline-block;
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+}
+.service a:hover,
+.big-services-box a:hover,
+.features-block a:hover {
+    text-decoration: none;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    text-decoration: none;
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+}
+.white .service a,
+.white .big-services-box a {
+    color: #fff;
+}
+.service .text-small {
+    overflow: hidden;
+}
+.big-services-box {
+    margin-bottom: 40px;
+    text-align: center;
+}
+.big-icon,
+.big-icon:visited {
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    color: #1e1e1e;
+    display: block;
+    height: 100px;
+    margin: 0 auto 20px;
+    text-align: center;
+    width: 100px;
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+}
+.big-icon i:before {
+    font-size: 50px;
+    line-height: 100px;
+}
+a.big-icon:hover {
+    opacity: .8;
+    filter: alpha(opacity=80);
+    -webkit-transition: opacity .2s linear;
+    transition: opacity .2s linear;
+}
+.big-icon.pull-left {
+    margin: 0 20px 20px 0;
+}
+.form-control {
+    width: 200px;
+}
